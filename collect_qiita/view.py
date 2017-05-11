@@ -1,11 +1,11 @@
 from flask import Flask, request, render_template, redirect, session, url_for
 from flask.ext.login import login_required
-from . import app,db
 from forms import EmailPasswordForm
 from forms import EmailForm
 from models import User
 from util import ts, send_email
 import requests
+import app, db
 
 url = "http://qiita.com/api/v2/items?page=1&per_page=100"
 data = requests.get(url).json()
@@ -25,10 +25,8 @@ def create_account():
 
         token = ts.dumps(self.email, salt='email-confirm-key')
 
-        confirm_url = url_for(
-            'confirm_email',
-            token=token,
-            _external=True)
+        confirm_url = url_for('confirm_email', token=token, _external=True)
+
         html = render_template('email/activate.html', confirm_url=confirm_url)
 
         send_email(user.email, subject, html)
@@ -48,7 +46,7 @@ def confirm_email(token):
 
     user.email_confirmed = True
 
-    db.session.add(user_
+    db.session.add(user)
     db.session.commit()
 
     return redirect(url_for('signin'))
@@ -79,17 +77,14 @@ def signup():
 @app.route('/reset', methods=["GET", "POST"])
 def reset():
     form = EmailForm()
-    if form.validate_on_submit()
+    if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first_or+404()
 
         subject = "Password reset requested"
 
         token = ts.dumps(self.email, salt='recover-key')
 
-        recover_url = url_for(
-            'reset_with_token',
-            token=token,
-            _external=True_
+        recover_url = url_for('reset_with_token', token=token, _external=True)
 
         html = render_template('email/recover.html', recover_url=recover_url)
 
@@ -157,4 +152,4 @@ def search_qiita():
     return render_template('search_result.html', searched_result=searched_result)
 
 if __name__ == '__main__':
-    app.run(host='192.168.33.10',debug=True)
+        app.run(host='localhost',debug=True)

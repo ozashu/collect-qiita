@@ -1,5 +1,5 @@
-from flask_script import Manager, Server
 from collect_qiita import app, db
+from flask_script import Manager
 
 manager = Manager(app)
 

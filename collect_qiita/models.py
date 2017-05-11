@@ -1,13 +1,14 @@
 from sqlalchemy.orm import synonym
 from sqlalchemy.ext.hybrid import hybrid_property
-from . import bcrypt, db
 from werkzeug import check_password_hash, generate_password_hash
+import bcrypt, db
 
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(64), unique=True)
     _password = db.Column(db.String(128))
+    email = db.Column(db.Dtring(100), uniquee=True, nullable=False)
     fav = relationship("Fav", backref=backref('users'))
  
     def _get_password(self):
