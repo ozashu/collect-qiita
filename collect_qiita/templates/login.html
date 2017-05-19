@@ -1,15 +1,25 @@
-{% extends "layout.html" %}
-<html>
-    <head>
-        <title>Login Page</title>
-    </head>
-    <body>
-        <form action="" method="post">
-            {{ form.email.label }}: {{ form.email(placeholder='yourname@email.com') }}
-            <br>
-            {{ form.password.label }}: {{ form.password }}
-            <br>
-            {{ form.csrf_token }}
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+{% from "_formhelper.html" import render_field %}
+
+{% block page_content %}
+<div class="row">
+    <form action="" method="post">
+    <div style="margin-left:auto;margin-right:auto;width:450px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <h5>Collect Qiita Loginページ</h5>
+            </div>
+            <div class="panel-body">
+              <dl>
+        {{ form.username.label }}: {{ form.username }}
+        <br>
+        {{ form.password.label }}: {{ form.password }}
+        <br>
+        {{ form.csrf_token }}
+             </dl>
+             <button type="submit" class="btn btn-info">ログイン</button>
+             </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

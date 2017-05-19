@@ -1,5 +1,6 @@
 from collect_qiita import app, db
 from flask_script import Manager
+from collect_qiita import view
 
 manager = Manager(app)
 

@@ -1,6 +1,14 @@
+{% extends "base.html" %}
+
+{% block page_content %}
 {% include "form.html" %}
-<h2>記事一覧</h2>
-{% for entry in articles %}
+
+<h2>新着記事</h2>
+<div class="row">
+  <ul class="list-group">
+    {% for entry in articles %}
     <li><img src={{ entry.user_image }} width="50" height="50">
     <a href="{{ entry.url }}"> {{ entry.title }} </a> : <a href="https://qiita.com/{{ entry.user_id }}"> {{ entry.user_id }} </a>
-{% endfor %}
+    {% endfor %}
+</div><!-- ./row-->
+{% endblock %}

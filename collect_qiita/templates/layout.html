@@ -1,10 +1,14 @@
 <!doctype html>
-<title>Flaskr</title>
+<title>Collect Qiita</title>
 <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
-<div class=page>
-  <h1>Flaskr</h1>
-  {% for message in get_flashed_messages() %}
+<body>
+  <header>
+    <div class=page>
+      <h1>Collect Qiita</h1>
+    </div>
+
+    {% for message in get_flashed_messages() %}
     <div class=flash>{{ message }}</div>
-  {% endfor %}
-  {% block body %}{% endblock %}
-</div>
+    {% endfor %}
+     {% block body %}{% endblock %}
+</bleck>

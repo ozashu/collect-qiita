@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block page_content %}
+{% include "form.html" %}
+<h2>お気に入り記事一覧</h2>
+<div class="row">
+  <ul class="list-group">
+  {% for favorite in fav %}
+    <li class="list-group-item">
+      <li><img src={{ entry.user_image }} width="50" height="50">
+    <a href="{{ favorite.url }}"> {{ favorite.title }} </a> : <a href="https://qiita.com/{{ favorite.user_id }}"> {{ favorite.user_id }} </a>
+    {% endfor %}
+</div><!-- ./row-->
+{% endblock %}
