@@ -8,5 +8,6 @@ Flask-Bcrypt
 itsdangerous
 Jinja2
 Werkzeug
+redis
 setuptools
 PyMySQL
