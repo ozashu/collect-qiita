@@ -7,13 +7,6 @@
 <div class="row">
   <ul class="list-group">
     {% for entry in articles %}
-        {% if not current_user.is_following(user) %}
-        <a href="{{ url_for('.follow', username=user.username) }}"
-        class="btn btn-primary">Follow</a>
-        {% else %}
-        <a href="{{ url_for('.unfollow', username=user.username) }}"
-        class="btn btn-default">Unfollow</a>
-        {% endif %}
     <li><img src={{ entry.user_image }} width="50" height="50">
     <a href="{{ entry.url }}"> {{ entry.title }} </a> : <a href="https://qiita.com/{{ entry.user_id }}"> {{ entry.user_id }} </a>
     {% endfor %}

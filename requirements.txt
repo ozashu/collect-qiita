@@ -5,9 +5,12 @@ Flask-Session
 Flask-Login
 Flask-WTF
 Flask-Bcrypt
+flask_cache
+wtforms_alchemy
 itsdangerous
 Jinja2
 Werkzeug
 redis
+requests
 setuptools
 PyMySQL
